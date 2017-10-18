@@ -7,9 +7,10 @@
 if [ -z "$1" ] ; then 
   if [ -z "$2" ] ; then 
     if [ -z "$3" ] ; then 
-      echo 'Usage: ./generate-slides.sh "#color" slideGroupId input.svg output.pdf'
-      echo 'Used apps: Xcfb, inkscape, stapler, grep (make sure to have them installed)'
-
+      if [ -z "$4" ] ; then 
+        echo 'Usage: ./generate-slides.sh "#color" slideGroupId input.svg output.pdf'
+        echo 'Used apps: Xcfb, inkscape, stapler, grep (make sure to have them installed)'
+      fi
     fi
   fi
 else
@@ -17,7 +18,7 @@ else
   GROUP=$2
   INPUT=$3
   OUTPUT=$4
-  echo Export all slides with background color $1 in file $2
+  echo Export all slides with background color $COLOR_INPUT form group $GROUP in file $INPUT
   Xvfb :100 &
   OLDDISPLAY=$DISPLAY
   DISPLAY=":100"
